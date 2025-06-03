@@ -1,5 +1,9 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap');
+
+
 
 /* Global Reset */
 * {
@@ -9,11 +13,30 @@
 }
 
 body {
+  --blue:#007bff;
   font-family: 'Poppins', sans-serif;
   background: #f8f9fa;
   scroll-behavior: smooth;
+  color: #333;
 }
 
+
+p{
+  color: #555;
+  line-height: 1.8;
+  font-size:1.8rem;
+   font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+}
+.heading{
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: "Rubik Gemstones", system-ui;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+}
 /* Header Section */
 .header {
   background: linear-gradient(135deg, #007bff, #6610f2);
@@ -39,19 +62,37 @@ body {
 }
 
 .navbar.sticky {
-  background: #007bff;
+  background: var(--blue);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav-link {
   font-weight: 600;
-  color: #333;
   transition: color 0.3s ease-in-out;
 }
-
-.nav-link:hover {
-  color: #007bff;
+.navbar .navbar-brand{
+  padding:0;
+  opacity: 0;
+  transition: .7s ease all;
+  transform: scale(.5);
 }
+.navbar.stickheader .navbar-brand{
+  opacity: 1;
+  transform: scale(1);
+}
+.navbar .navbar-brand img{
+  max-width:60px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.navbar .nav-link{
+  color:#fff;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:active{
+  color:#b33800;
+}
+
 
 /* About Section */
 #about {
@@ -59,17 +100,11 @@ body {
 }
 
 #about h2 {
-  font-size: 2.5rem;
   margin-bottom: 20px;
-  color: #333;
 }
 
 #about p {
-  font-size: 1.1rem;
-  color: #555;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.8;
+  
   animation: slideInUp 1.2s ease-out;
 }
 
@@ -94,7 +129,7 @@ body {
 
 /* Contact Form */
 #contact {
-  background: #007bff;
+  background: var(--blue);
   color: white;
   padding: 50px 0;
 }
@@ -110,7 +145,7 @@ body {
 #contact a {
   padding: 10px 30px;
   background: white;
-  color: #007bff;
+  color: var(--blue);
   border-radius: 30px;
   text-decoration: none;
   transition: background 0.3s ease;
@@ -130,7 +165,7 @@ footer {
 
 footer a {
   text-decoration: none;
-  color: #007bff;
+  color: var(--blue);
 }
 
 /* Animations */
@@ -193,13 +228,22 @@ footer a {
 .light-theme .themeToggle img.day-mode{
   display:none;
 }
+.light-theme .navbar .nav-link{
+  color:#fff;
+}
+.light-theme .navbar .nav-link:hover,
+.light-theme .navbar .nav-link:active {
+  color: var(--blue);
+}
 
 .dark-theme{
    background: linear-gradient(135deg, #000000, #b33800);
+   color:#fff;
+     --blue:#212529;
 }
 .dark-theme .header{
  background: linear-gradient(135deg, #0a0a0a, #8a2e00) !important;
-  color: #ffccaa;
+  color: #ffccaa !important;
     text-shadow: 0 3px 12px rgba(138, 46, 0, 0.7); 
 }
 body.dark-theme .navbar  {
@@ -208,4 +252,7 @@ body.dark-theme .navbar  {
   /* background-color: #0a0a0a; */
   border-bottom: 1px solid #b33800; /* optional: burnt orange border for highlight */
   transition: background-color 0.3s ease;
+}
+.dark-theme p{
+  color:#fff;
 }

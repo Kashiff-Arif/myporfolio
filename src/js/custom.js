@@ -17,7 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     });
-  
+    window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    const topOffset = navbar.getBoundingClientRect().top;
+
+    if (topOffset <= 0) {
+      navbar.classList.add('stickheader');
+    } else {
+      navbar.classList.remove('stickheader');
+    }
+  });
     // Contact Form Validation
     const form = document.querySelector("#contact-form");
     if (form) {
