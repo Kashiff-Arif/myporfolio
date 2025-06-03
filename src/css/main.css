@@ -167,3 +167,45 @@ footer a {
     margin:auto;
     margin-bottom: 15px;
 }
+
+.themeToggle{
+  position: fixed;
+  top:15px;
+  right:15px;
+  z-index:99;
+  background: transparent;
+  border:0;
+  outline: none;
+  box-shadow: none;
+}
+.themeToggle img{
+  max-width:30px;
+  transform: .5s ease all;
+}
+.themeToggle img.night-mode{
+  display:none;
+}
+
+
+.light-theme .themeToggle img.night-mode{
+  display:block;
+}
+.light-theme .themeToggle img.day-mode{
+  display:none;
+}
+
+.dark-theme{
+   background: linear-gradient(135deg, #000000, #b33800);
+}
+.dark-theme .header{
+ background: linear-gradient(135deg, #0a0a0a, #8a2e00) !important;
+  color: #ffccaa;
+    text-shadow: 0 3px 12px rgba(138, 46, 0, 0.7); 
+}
+body.dark-theme .navbar  {
+  background-color: #000000; /* pure black */
+  /* Ya thoda softer dark black */
+  /* background-color: #0a0a0a; */
+  border-bottom: 1px solid #b33800; /* optional: burnt orange border for highlight */
+  transition: background-color 0.3s ease;
+}

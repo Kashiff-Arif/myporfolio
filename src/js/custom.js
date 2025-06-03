@@ -59,5 +59,36 @@ document.addEventListener("DOMContentLoaded", function () {
   
     observer.observe(projectSection);
   });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("themeToggle");
+    const body = document.body;
+
+    // Load saved theme from localStorage and apply it
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        body.classList.add("light-theme");
+    } else {
+        // Default to dark
+        body.classList.add("dark-theme");
+    }
+
+    toggleBtn.addEventListener("click", function () {
+        if (body.classList.contains("dark-theme")) {
+            body.classList.remove("dark-theme");
+            body.classList.add("light-theme");
+            localStorage.setItem("theme", "light");
+        } else {
+            body.classList.remove("light-theme");
+            body.classList.add("dark-theme");
+            localStorage.setItem("theme", "dark");
+        }
+    });
+});
+
+
+
+
   
   
