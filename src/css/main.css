@@ -11,6 +11,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+.badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding:.7rem;
+  font-weight: 600;
+}
 .abs-link {
 	position: absolute;
 	width: 100%;
@@ -332,4 +339,7 @@ body.dark-theme .navbar  {
 }
 .dark-theme .card .card-title{
   color:#fff;
+}
+.dark-theme .badge{
+  background-color: var(--blue) !important;
 }
