@@ -175,19 +175,23 @@
 
 <section id="contact" class="container p-5 text-center">
     <h2 class="heading">Contact Me</h2>
-    <p>Email: kashifarif409@gmail.com</p>
-    <p>WhatsApp: +923314124302</p>
-    <a href="https://www.linkedin.com/in/kashif-arif-74158a351" target="_blank" class="btn btn-primary">LinkedIn</a>
+    <div class="contact-methods mb-4">
+        <p><i class="bi bi-envelope"></i> Email: kashifarif409@gmail.com</p>
+        <p><i class="bi bi-whatsapp"></i> WhatsApp: +923314124302</p>
+        <a href="https://www.linkedin.com/in/kashif-arif-74158a351" target="_blank" class="btn btn-primary">
+            <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+    </div>
 
-    <form class="mt-4" method="post">
+    <form class="mt-4" method="POST" id="contactForm">
         <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Your Name" required>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
         </div>
         <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Your Email" required>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
         </div>
         <div class="mb-3">
-            <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            <textarea class="form-control" rows="4" name="message" id="message" placeholder="Your Message" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send Message</button>
     </form>

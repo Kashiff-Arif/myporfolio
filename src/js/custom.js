@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
     // Contact Form Validation
-    const form = document.querySelector("#contact-form");
+    const form = document.querySelector("#contact");
     if (form) {
       form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -46,7 +46,58 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-
+// Contact Form Submission
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+    contactForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+        
+        try {
+            const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Success message
+                const successAlert = document.createElement('div');
+                successAlert.className = 'alert alert-success mt-3';
+                successAlert.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                contactForm.appendChild(successAlert);
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Remove success message after 5 seconds
+                setTimeout(() => {
+                    successAlert.remove();
+                }, 5000);
+            } else {
+                throw new Error('Failed to send message');
+            }
+        } catch (error) {
+            // Error message
+            const errorAlert = document.createElement('div');
+            errorAlert.className = 'alert alert-danger mt-3';
+            errorAlert.textContent = 'Oops! Something went wrong. Please try again later or contact me directly at kashifarif409@gmail.com';
+            contactForm.appendChild(errorAlert);
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    });
+}
   document.addEventListener("DOMContentLoaded", function () {
     const video = document.querySelector("#projects video");
     const projectSection = document.querySelector("#projects");
