@@ -171,6 +171,7 @@ p{
 .header p {
   font-size: 1.2rem;
   margin-top: 10px;
+  margin-bottom: 0;
   color:#fff;
 }
 
@@ -264,7 +265,7 @@ p{
 #contact {
   background: var(--blue);
   color: white;
-  padding: 50px 0;
+  padding: 50px 15px !important;
 }
 
 #contact h2 {
@@ -405,4 +406,43 @@ body.dark-theme .navbar  {
 }
 .dark-theme .badge{
   background-color: var(--blue) !important;
+}
+
+@media screen and (max-width:767px){
+	.py-5 {
+		padding-top: 1.5rem !important;
+		padding-bottom: 1.5rem !important;
+	}
+	.logo{
+		max-width:110px;
+	}
+	.header h1 {
+		font-size: 2rem;
+		letter-spacing: 1px;
+	}
+	.heading{
+		font-size:2.2rem;
+	}
+	p{
+		line-height: 1.5;
+		font-size:1.4rem;
+	}
+	#contact h2 {
+		font-size: 2.2rem;
+	}
+	.btn{
+		height:48px;
+		min-width:160px;
+	}
+	.form-control{
+		height: 44px;
+		line-height: 44px;
+		padding: 0px 15px;
+	}
+}
+
+@media screen and (max-width:575px){
+	.navbar-toggler{
+		margin-right:45px;
+	}
 }
