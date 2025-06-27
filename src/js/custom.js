@@ -148,6 +148,104 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// progress bar function
+
+
+function animatePercent(el, target) {
+  let count = 0;
+  const speed = 15;
+  const update = () => {
+    if (count < target) {
+      count++;
+      el.textContent = count + "%";
+      setTimeout(update, speed);
+    } else {
+      el.textContent = target + "%";
+    }
+  };
+  update();
+}
+
+window.addEventListener("load", () => {
+  document.querySelectorAll(".progress-fill").forEach((bar) => {
+    const targetWidth = bar.getAttribute("data-value");
+    bar.style.width = "0";
+    setTimeout(() => {
+      bar.style.width = targetWidth + "%";
+    }, 200);
+  });
+
+  document.querySelectorAll(".progress-percent").forEach((percent) => {
+    const target = parseInt(percent.getAttribute("data-target"));
+    animatePercent(percent, target);
+  });
+});
+
+// Toast logic
+function showToast(message, type = 'info') {
+  const toastContainer = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  toastContainer.appendChild(toast);
+  setTimeout(() => {
+    toast.remove();
+  }, 4000);
+}
+
+// Sound
+const clickSound = new Audio("https://assets.mixkit.co/sfx/download/mixkit-select-click-1109.wav");
+
+function updateProgress(el, change) {
+  const percentEl = el.querySelector('.progress-percent');
+  const fillEl = el.querySelector('.progress-fill');
+  const skillName = el.getAttribute('data-skill');
+
+  let current = parseInt(fillEl.getAttribute('data-value'));
+  const newValue = current + change;
+
+  if (newValue > 100) {
+    showToast(`${skillName} is already maxed out 💯`, 'warning');
+    return;
+  }
+
+  if (newValue < 0) {
+    showToast(`${skillName} is already at 0 🫠`, 'error');
+    return;
+  }
+
+  fillEl.setAttribute('data-value', newValue);
+  fillEl.style.width = newValue + "%";
+  percentEl.textContent = newValue + "%";
+
+  const toastMsg = change > 0
+    ? `+1% added to ${skillName} 🎯`
+    : `-1% removed from ${skillName} 👀`;
+
+  const type = change > 0 ? 'success' : 'info';
+
+  showToast(toastMsg, type);
+  clickSound.currentTime = 0;
+  clickSound.play();
+}
+
+// Button listeners
+document.querySelectorAll('.add-progress').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const container = btn.closest('.progress-bar');
+    updateProgress(container, 1);
+  });
+});
+
+document.querySelectorAll('.minus-progress').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const container = btn.closest('.progress-bar');
+    updateProgress(container, -1);
+  });
+});
+
+
+
 
 
   
